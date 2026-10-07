@@ -1,0 +1,135 @@
+/* ============================================================
+   TrazaMar · Sistema de diseño
+   Paleta oceánica definida por el equipo NotFound-Devs:
+   azules de bahía + verde alga, para trazabilidad de muestreo acuícola.
+   ============================================================ */
+:root {
+  --color-bay-900: #0a3f52;   /* profundo, para sidebar */
+  --color-bay-700: #0d6e8c;   /* principal */
+  --color-bay-100: #dcedf1;   /* halo suave sobre fondo claro */
+  --color-kelp-600: #2fa88c;  /* secundario / validado */
+  --color-kelp-100: #e1f3ee;
+  --color-amber-500: #e8a33d; /* observado / pendiente */
+  --color-amber-100: #fbedd6;
+  --color-tide-100: #f2f7f7;  /* fondo general */
+  --color-ink-900: #1b2a2e;   /* texto principal */
+  --color-ink-500: #55686c;   /* texto secundario */
+  --color-error-600: #c1443c;
+  --color-error-100: #f8e3e1;
+  --color-line: #d6e4e4;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --font-head: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --shadow-panel: 0 1px 2px rgba(10, 63, 82, 0.06), 0 8px 24px -12px rgba(10, 63, 82, 0.18);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-tide-100);
+  color: var(--color-ink-900);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+button, input, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+a { color: inherit; }
+
+::selection { background: var(--color-kelp-100); }
+
+/* Scrollbar sutil, coherente con la identidad */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--color-bay-100); border-radius: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 9px 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.08s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn-primary { background: var(--color-bay-700); color: white; }
+.btn-primary:hover { background: #0a5a73; }
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--color-line);
+  color: var(--color-ink-900);
+}
+.btn-ghost:hover { border-color: var(--color-bay-700); }
+
+.btn-secondary { background: var(--color-kelp-600); color: white; }
+.btn-secondary:hover { background: #278f76; }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-ink-500);
+}
+.field input, .field select, .field textarea {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: 9px 11px;
+  background: white;
+  color: var(--color-ink-900);
+  outline: none;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--color-bay-700);
+  box-shadow: 0 0 0 3px var(--color-bay-100);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-transform: none;
+  white-space: nowrap;
+}
+.badge-borrador { background: #eef1f1; color: var(--color-ink-500); }
+.badge-pendiente { background: var(--color-amber-100); color: #8a5b12; }
+.badge-observada { background: var(--color-amber-100); color: #8a5b12; }
+.badge-corregida { background: var(--color-bay-100); color: var(--color-bay-700); }
+.badge-validada { background: var(--color-kelp-100); color: #1f7a63; }
+
+.panel {
+  background: white;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-panel);
+}

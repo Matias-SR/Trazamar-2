@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "cl.aldemar.trazamar.app-debug-60:/drawable_logo.png.flat",
+        "source": "cl.aldemar.trazamar.app-main-62:/drawable/logo.png"
+    },
+    {
+        "merged": "cl.aldemar.trazamar.app-debug-60:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "cl.aldemar.trazamar.app-main-62:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "cl.aldemar.trazamar.app-debug-60:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "cl.aldemar.trazamar.app-main-62:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "cl.aldemar.trazamar.app-debug-60:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "cl.aldemar.trazamar.app-main-62:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "cl.aldemar.trazamar.app-debug-60:/xml_file_paths.xml.flat",
+        "source": "cl.aldemar.trazamar.app-main-62:/xml/file_paths.xml"
+    }
+]

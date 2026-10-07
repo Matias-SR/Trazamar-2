@@ -1,0 +1,10 @@
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: flex-end;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+}
+.filtros .field { min-width: 150px; }
+.filtros__limpiar { margin-left: auto; height: 38px; }

@@ -1,0 +1,117 @@
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+}
+
+@media (max-width: 780px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .app-sidebar { display: none; }
+}
+
+.app-sidebar {
+  background: var(--color-bay-900);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 18px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.app-sidebar__brand { padding: 6px 10px 28px; }
+.app-sidebar__mark {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: block;
+}
+.app-sidebar__caption {
+  font-size: 0.76rem;
+  color: rgba(242, 247, 247, 0.6);
+}
+
+.app-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.app-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  color: rgba(242, 247, 247, 0.78);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.app-nav-item:hover { background: rgba(242, 247, 247, 0.08); color: white; }
+.app-nav-item.is-active {
+  background: var(--color-kelp-600);
+  color: white;
+}
+
+.app-sidebar__user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 16px;
+  margin-top: 12px;
+  border-top: 1px solid rgba(242, 247, 247, 0.14);
+}
+
+.app-sidebar__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-kelp-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.app-sidebar__userinfo {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-size: 0.8rem;
+}
+.app-sidebar__userinfo strong {
+  font-size: 0.86rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.app-sidebar__userinfo span { color: rgba(242, 247, 247, 0.6); }
+
+.app-sidebar__logout {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: rgba(242, 247, 247, 0.7);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+.app-sidebar__logout:hover { background: rgba(242, 247, 247, 0.1); color: white; }
+
+.app-content {
+  padding: 28px 28px 40px;
+  max-width: 1180px;
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+@media (max-width: 780px) {
+  .app-content { padding: 20px; }
+}
