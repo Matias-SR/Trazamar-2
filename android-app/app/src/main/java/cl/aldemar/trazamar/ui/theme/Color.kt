@@ -10,7 +10,7 @@ val BaySoft = Color(0xFFDCEDF1)      // Halo / contenedores suaves sobre princip
 val KelpSecondary = Color(0xFF2FA88C) // Secundario: acentos, estado "validado"
 val KelpSoft = Color(0xFFE1F3EE)
 
-val Tide = Color(0xFFF2F7F7)          // Fondo general de pantallas
+val Tide = Color(0xFFF0FFED)          // Fondo general de pantallas de navegación (#F0FFED)
 val Ink = Color(0xFF1B2A2E)           // Texto principal
 val InkMuted = Color(0xFF55686C)      // Texto secundario
 

@@ -4,6 +4,6 @@
     <string name="app_name">TrazaMar</string>
     <style name="Theme.TrazaMar" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">#0D6E8C</item>
-        <item name="android:windowBackground">#F2F7F7</item>
+        <item name="android:windowBackground">#F0FFED</item>
     </style>
 </resources>

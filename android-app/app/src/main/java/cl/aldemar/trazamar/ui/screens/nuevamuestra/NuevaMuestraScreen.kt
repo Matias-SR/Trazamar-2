@@ -13,6 +13,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -136,8 +138,51 @@ private fun PasoFormulario(estado: NuevaMuestraUiState, vm: NuevaMuestraViewMode
 
         Spacer(Modifier.height(14.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            OutlinedTextField(estado.fecha, vm::onFechaChange, label = { Text("Fecha (AAAA-MM-DD)") }, modifier = Modifier.weight(1f))
-            OutlinedTextField(estado.hora, vm::onHoraChange, label = { Text("Hora") }, modifier = Modifier.weight(1f))
+            OutlinedTextField(
+                value = estado.fecha,
+                onValueChange = {},
+                readOnly = true,
+                enabled = false,
+                label = { Text("Fecha (Red)") },
+                trailingIcon = { Icon(Icons.Default.Lock, contentDescription = "No editable", tint = InkMuted) },
+                modifier = Modifier.weight(1f),
+                colors = OutlinedTextFieldDefaults.colors(
+                    disabledTextColor = Ink,
+                    disabledBorderColor = LineSubtle,
+                    disabledLabelColor = InkMuted,
+                    disabledContainerColor = BaySoft.copy(alpha = 0.25f),
+                ),
+            )
+            OutlinedTextField(
+                value = estado.hora,
+                onValueChange = {},
+                readOnly = true,
+                enabled = false,
+                label = { Text("Hora (Red)") },
+                trailingIcon = { Icon(Icons.Default.Lock, contentDescription = "No editable", tint = InkMuted) },
+                modifier = Modifier.weight(1f),
+                colors = OutlinedTextFieldDefaults.colors(
+                    disabledTextColor = Ink,
+                    disabledBorderColor = LineSubtle,
+                    disabledLabelColor = InkMuted,
+                    disabledContainerColor = BaySoft.copy(alpha = 0.25f),
+                ),
+            )
+        }
+        Spacer(Modifier.height(4.dp))
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(
+                imageVector = Icons.Default.Schedule,
+                contentDescription = null,
+                tint = KelpSecondary,
+                modifier = Modifier.size(16.dp)
+            )
+            Spacer(Modifier.width(6.dp))
+            Text(
+                text = if (estado.cargandoFechaRed) "Obteniendo timestamp de red..." else "Fecha y hora obtenidas automáticamente por red",
+                style = MaterialTheme.typography.labelSmall,
+                color = InkMuted
+            )
         }
 
         Spacer(Modifier.height(14.dp))

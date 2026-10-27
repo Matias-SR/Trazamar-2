@@ -13,22 +13,31 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import cl.aldemar.trazamar.data.remote.NetworkTimeUtils
 import java.io.File
-import java.text.SimpleDateFormat
-import java.util.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 enum class PasoRegistro { FORMULARIO, FOTOGRAFIA, CONTEO, RESUMEN }
+
+private fun obtenerFechaHoraActual(): Pair<String, String> {
+    val currentDateTime = LocalDateTime.now()
+    val fecha = currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+    val hora = currentDateTime.format(DateTimeFormatter.ofPattern("HH:mm"))
+    return fecha to hora
+}
 
 data class NuevaMuestraUiState(
     val paso: PasoRegistro = PasoRegistro.FORMULARIO,
     val cargandoCatalogos: Boolean = true,
+    val cargandoFechaRed: Boolean = true,
     val centros: List<CentroDto> = emptyList(),
 
     val centroId: Int? = null,
     val trenId: Int? = null,
     val lineaId: Int? = null,
-    val fecha: String = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date()),
-    val hora: String = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date()),
+    val fecha: String = obtenerFechaHoraActual().first,
+    val hora: String = obtenerFechaHoraActual().second,
     val tramoMetros: String = "",
 
     val fotoPath: String? = null,
@@ -61,7 +70,22 @@ class NuevaMuestraViewModel(application: Application) : AndroidViewModel(applica
     private var operadorId: Int? = null
 
     init {
+        sincronizarFechaHoraRed()
         cargarSesionYCatalogos()
+    }
+
+    fun sincronizarFechaHoraRed() {
+        viewModelScope.launch {
+            _uiState.update { it.copy(cargandoFechaRed = true) }
+            val (fechaRed, horaRed) = NetworkTimeUtils.obtenerFechaHoraRed()
+            _uiState.update {
+                it.copy(
+                    fecha = fechaRed,
+                    hora = horaRed,
+                    cargandoFechaRed = false,
+                )
+            }
+        }
     }
 
     private fun cargarSesionYCatalogos() {
